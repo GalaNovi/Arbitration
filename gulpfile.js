@@ -182,10 +182,10 @@ gulp.task('serve', function () { // Запускает сервер, при из
 
 gulp.task('watch', function () { // Настройки вотчера
   gulp.watch('src/**/*.less', gulp.series('styleDev'));
-  gulp.watch('src/{fonts,img,js}/**/*.*', gulp.parallel('copyDev', 'jsDev', 'webpDev'));
+  gulp.watch('src/{fonts,img}/**/*.*', gulp.parallel('copyDev', 'webpDev'));
   gulp.watch('src/*.html', gulp.series('copyHTMLDev'));
 });
 
-gulp.task('dev', gulp.series(gulp.parallel('styleDev', 'copyDev', 'webpDev', 'jsDev', gulp.series('spriteDev', 'copyHTMLDev')), gulp.parallel('clearCache', 'watch', 'serve')));
+gulp.task('dev', gulp.series(gulp.parallel('styleDev', 'copyDev', 'webpDev', gulp.series('spriteDev', 'copyHTMLDev')), gulp.parallel('clearCache', 'watch', 'serve')));
 
 gulp.task('build', gulp.series('cleanBuild', gulp.parallel('styleBuild', 'imagesBuild', 'copyBuild', 'webpBuild', 'jsBuild', 'jsMinBuild', gulp.series('spriteBuild', 'copyHTMLBuild', 'clearCache'))));
