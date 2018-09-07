@@ -1,0 +1,82 @@
+.download__heading {
+    .indent-reset;
+
+    font-size: 40px;
+    line-height: 52px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.download__heading-addon {
+    font-size: 18px;
+    line-height: 24px;
+    color: #f99406;
+    font-weight: 300;
+}
+
+.download__form {
+    display: flex;
+}
+
+.download__form-input {
+    width: 373px;
+    height: 54px;
+
+    font-size: 14px;
+    line-height: auto;
+
+    border: none;
+}
+
+.download__submit-button {
+    width: 196px;
+    height: 54px;
+
+    font-size: 14px;
+    line-height: auto;
+    color: #ffffff;
+
+    background-color: #f99406;
+    border: none;
+}
+
+// =========================== Tablet ===========================
+
+@media(max-width: 1170px) {
+    .download__heading {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .download__heading-addon {
+        font-size: 16px;
+    }
+
+    .download__alert {
+        font-size: 16px;
+    }
+}
+
+// =========================== Mobile ===========================
+
+@media(max-width: @tablet) {
+    .download__heading {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .download__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .download__form-input {
+        width: auto;
+        text-align: center;
+    }
+    
+    .download__submit-button {
+        width: auto;
+    }
+}

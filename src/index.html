@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Школа трафика</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header class="page-header">
-    <img class="page-header__logo" src="http://placehold.it/109x30" alt="Логотип">
+    <img class="page-header__logo" src="img/logo-desktop.png" alt="Логотип">
   </header>
 
   <main class="page-main">
     <h1 class="visually-hidden">Школа траффика</h1>
-    <section class="videocource">
+    <section class="videocourse">
       <h2 class="videocourse__heading">
-        <span class="videocourse__pre-heading">Видеокурс</span>
-        "Вступление в товарный арбитраж трафика"
+        <span class="videocourse__pre-heading">Видеокурс</span><br>
+        “ Вступление в товарный арбитраж трафика ”
       </h2>
       <p class="videocourse__text">
           Получи бесплатный видеокурс  по товарному арбитражу для новичков
@@ -30,16 +31,16 @@
     <section class="features">
       <h2 class="visually-hidden">Преимущества</h2>
       <ul class="features__list">
-        <li class="features__item features__item--">
-          <span class="features__item-first-word">Быстро</span>
+        <li class="features__item features__item--fast">
+          <span class="features__item-first-word">Быстро</span><br>
           вольешься в нишу интернет продаж
         </li>
-        <li class="features__item features__item--">
-            <span class="features__item-first-word">Овладеешь</span>
+        <li class="features__item features__item--seize">
+            <span class="features__item-first-word">Овладеешь</span><br>
             наиболее выгодной и востребованной профессией 2016 года
         </li>
-        <li class="features__item features__item--">
-            <span class="features__item-first-word">Зарабатывай</span>
+        <li class="features__item features__item--earn">
+            <span class="features__item-first-word">Зарабатывай</span><br>
             деньги в любой точке мира
         </li>
       </ul>
@@ -52,7 +53,11 @@
           Прокрутил рекламы более чем на 50000$ Ежедневно продаю более 
           150 физический товаров притом, что трафик на рекламу лью сам!
       </p>
-      <img class="author__photo" src="http://placehold.it/369x467" alt="Фотография автора">
+      <picture class="author__photo">
+        <source media="(max-width: 768px)" srcset="img/photo-mobile.jpg">
+        <source media="(max-width: 1170px)" srcset="img/photo-tablet.jpg">
+        <img src="img/photo-desktop.jpg" alt="Фотография автора">
+      </picture>
     </section>
     <section class="knowledge">
       <h2 class="knowledge__heading">
@@ -83,7 +88,7 @@
     </section>
     <section class="download">
       <h2 class="download__heading">
-        Скачай видеокурс сейчас
+        Скачай видеокурс сейчас<br>
         <span class="download__heading-addon">
           и получи крутой бонус совершенно бесплатно!
         </span>
@@ -101,7 +106,7 @@
   <footer class="page-footer">
     <p class="page-footer__description">
       <span class="page-footer__description-name">"Школа трафика"</span>
-       - школа товарного арбитража трафика Артура Гарнаева (с) 2016
+       - школа товарного арбитража трафика Артура Гарнаева (с) 2016
     </p>
   </footer>
 

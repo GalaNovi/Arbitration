@@ -1,0 +1,33 @@
+.knowledge__heading {
+    font-size: 40px;
+    line-height: 52px;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.knowledge__list {
+    .indent-reset;
+}
+
+// =========================== Tablet ===========================
+
+@media(max-width: 1170px) {
+    .knowledge__heading {
+        font-size: 28px;
+        line-height: 36px;
+    }
+    
+    .knowledge__list {
+        font-size: 16px;
+    }
+}
+
+// =========================== Mobile ===========================
+
+@media(max-width: @tablet) {
+    .knowledge__heading {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
