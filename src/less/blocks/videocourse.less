@@ -1,4 +1,14 @@
+.videocourse {
+    position: relative;
+    padding-top: 90px;
+    padding-bottom: 328px;
+    overflow: hidden;
+}
+
 .videocourse__heading {
+    position: relative;
+    .indent-reset;
+    margin-bottom: 13px;
     width: 580px;
 
     font-size: 40px;
@@ -6,13 +16,22 @@
     font-weight: 400;
     color: #ffffff;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .videocourse__pre-heading {
+    display: block;
+    margin-bottom: -46px;
+
     font-size: 14px;
     line-height: 26px;
     font-weight: 300;
     color: #f99406;
+}
+
+.videocourse__heading-quotes {
+    position: absolute;
+    left: -20px;
 }
 
 .videocourse__quotes {
@@ -21,6 +40,8 @@
 }
 
 .videocourse__text {
+    .indent-reset;
+    margin-bottom: 64px;
     width: 360px;
 }
 
@@ -29,69 +50,82 @@
 }
 
 .videocource__form-input {
-    width: 373px;
-    height: 54px;
+  padding: 0 26px;
+  width: 373px;
+  height: 54px;
 
-    font-size: 14px;
-    line-height: auto;
+  font-size: 14px;
+  line-height: auto;
+  letter-spacing: 0.6px;
 
-    border: none;
+  border: none;
 }
 
 .videocourse__submit-button {
-    width: 196px;
-    height: 54px;
+  width: 196px;
+  height: 54px;
 
-    font-size: 14px;
-    line-height: auto;
-    color: #ffffff;
+  font-size: 14px;
+  line-height: auto;
+  color: #ffffff;
+  letter-spacing: 0.8px;
 
-    background-color: #f99406;
-    border: none;
+  background-color: #f99406;
+  border: none;
+  
+  cursor: pointer;
+}
+
+.videocourse__image {
+  position: absolute;
+  top: -185px;
+  right: -194px;
+
+  z-index: -1;
 }
 
 // =========================== Tablet ===========================
 
-@media(max-width: @tablet) {
-    .videocourse__heading {
-        width: 420px;
+@media(max-width: @desktop) {
+  .videocourse__heading {
+    width: 420px;
     
-        font-size: 28px;
-        line-height: 36px;
-    }
+    font-size: 28px;
+    line-height: 36px;
+  }
 
-    .videocourse__text {
-        width: 325px;
+  .videocourse__text {
+    width: 325px;
 
-        font-size: 16px;
-    }
+    font-size: 16px;
+  }
 
-    .videocource__form-input {
-        width: 212px;
-    }
+  .videocource__form-input {
+    width: 212px;
+  }
 }
 
 // =========================== Mobile ===========================
 
 @media(max-width: @tablet) {
-    .videocourse__heading {
-        width: 300px;
+  .videocourse__heading {
+    width: 300px;
     
-        font-size: 20px;
-        line-height: 30px;
-    }
+    font-size: 20px;
+    line-height: 30px;
+  }
 
-    .videocourse__form {
-        display: flex;
-        flex-direction: column;
-    }
+  .videocourse__form {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .videocource__form-input {
-        width: auto;
-        text-align: center;
-    }
+  .videocource__form-input {
+    width: auto;
+    text-align: center;
+  }
 
-    .videocourse__submit-button {
-        width: auto;
-    }
+  .videocourse__submit-button {
+    width: auto;
+  }
 }

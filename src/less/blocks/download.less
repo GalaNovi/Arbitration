@@ -1,82 +1,108 @@
-.download__heading {
-    .indent-reset;
+.download {
+  padding-top: 155px;
+  padding-bottom: 240px;
 
-    font-size: 40px;
-    line-height: 52px;
-    text-transform: uppercase;
-    color: #ffffff;
-    font-weight: 400;
+  background: url("../img/download-bg-desktop.png") no-repeat center top;
+}
+
+.download__heading {
+  .indent-reset;
+  margin-bottom: 75px;
+
+  font-size: 40px;
+  line-height: 52px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 1.7px;
+  text-align: center;
 }
 
 .download__heading-addon {
-    font-size: 18px;
-    line-height: 24px;
-    color: #f99406;
-    font-weight: 300;
+  display: block;
+  margin-top: 10px;
+
+  font-size: 18px;
+  line-height: 24px;
+  color: #f99406;
+  font-weight: 300;
+  letter-spacing: 0.9px;
+}
+
+.download__alert {
+  margin-bottom: 205px;
+
+  text-align: center;
 }
 
 .download__form {
-    display: flex;
+  display: flex;
+  justify-content: center;
 }
 
 .download__form-input {
-    width: 373px;
-    height: 54px;
+  padding: 0 26px;
+  width: 373px;
+  height: 54px;
 
-    font-size: 14px;
-    line-height: auto;
+  font-size: 14px;
+  line-height: auto;
+  letter-spacing: 0.6px;
 
-    border: none;
+  border: none;
 }
 
 .download__submit-button {
-    width: 196px;
-    height: 54px;
+width: 196px;
+height: 54px;
 
-    font-size: 14px;
-    line-height: auto;
-    color: #ffffff;
+font-size: 14px;
+line-height: auto;
+color: #ffffff;
+letter-spacing: 0.8px;
 
-    background-color: #f99406;
-    border: none;
+background-color: #f99406;
+border: none;
+
+cursor: pointer;
 }
 
 // =========================== Tablet ===========================
 
-@media(max-width: 1170px) {
-    .download__heading {
-        font-size: 28px;
-        line-height: 36px;
-    }
+@media(max-width: @desktop) {
+  .download__heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
 
     .download__heading-addon {
-        font-size: 16px;
-    }
+    font-size: 16px;
+  }
 
     .download__alert {
-        font-size: 16px;
-    }
+    font-size: 16px;
+  }
 }
 
 // =========================== Mobile ===========================
 
 @media(max-width: @tablet) {
-    .download__heading {
-        font-size: 20px;
-        line-height: 30px;
-    }
+  .download__heading {
+    font-size: 20px;
+    line-height: 30px;
+  }
 
-    .download__form {
-        display: flex;
-        flex-direction: column;
-    }
+  .download__form {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .download__form-input {
-        width: auto;
-        text-align: center;
-    }
+  .download__form-input {
+    width: auto;
+    text-align: center;
+  }
     
-    .download__submit-button {
-        width: auto;
-    }
+  .download__submit-button {
+    width: auto;
+  }
 }

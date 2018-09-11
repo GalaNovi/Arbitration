@@ -1,21 +1,32 @@
+.page-footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  background-color: #080d13;
+}
+
 .page-footer__description {
-    font-size: 14px;
-    line-height: 24px;
+  .indent-reset;
+
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.75px;
 }
 
 .page-footer__description-name {
-    text-transform: uppercase;
-    color: #f99406;
+  text-transform: uppercase;
+  color: #f99406;
+  letter-spacing: 0.9px;
 }
 
 // =========================== Mobile ===========================
 
 @media(max-width: @tablet) {
-    .page-footer__description {
-        width: 290px;
+  .page-footer__description {
+    width: 290px;
 
-        font-size: 12px;
-        line-height: 18px;
-        text-align: center;
-    }
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+  }
 }

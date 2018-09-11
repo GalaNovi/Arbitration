@@ -1,46 +1,96 @@
+.author {
+  display: flex;
+  justify-content: center;
+  padding-right: 5px;
+  padding-bottom: 140px;
+}
+
+.autor__text-wrapper {
+  position: relative;
+  margin-left: -190px;
+  padding-top: 140px;
+  padding-left: 265px;
+  padding-right: 75px;
+  width: 734px;
+  min-height: 600px;
+  border: 3px solid #f59f26;
+
+  background-image: radial-gradient(at 25% 37%, rgba(255, 255, 255, 0.15), transparent 35%);
+
+  &::after {
+    position: absolute;
+    top: 222px;
+    left: 75px;
+    width: 401px;
+    height: 2px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    content: "";
+  }
+}
+
 .author__heading {
-    .indent-reset;
+  .indent-reset;
+  margin-bottom: 3px;
     
-    font-size: 14px;
-    line-height: 26px;
-    font-weight: 300;
-    color: #f99406;
-    text-transform: uppercase;
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: 300;
+  color: #f99406;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
 
 .author__name {
-    .indent-reset;
+  .indent-reset;
+  margin-bottom: 24px;
 
-    font-size: 40px;
-    line-height: 52px;
-    font-weight: 400;
-    color: #ffffff;
-    text-transform: uppercase;
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: 400;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
 }
 
 .author__activity {
-    .indent-reset;
+  .indent-reset;
+  margin-bottom: 50px;
+  width: 240px;
     
-    font-size: 14px;
-    line-height: 18px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 1.4px;
+}
+
+.author__photo {
+  align-self: center;
+
+  order: -1;
+  z-index: 1;
+}
+
+.author__photo img {
+  display: block;
 }
 
 // =========================== Tablet ===========================
 
-@media(max-width: 1170px) {
-    .author__name {
-        font-size: 28px;
-    }
+@media(max-width: @desktop) {
+  .author__name {
+    font-size: 28px;
+  }
 
-    .author__info {
-        font-size: 16px;
-    }
+  .author__info {
+    font-size: 16px;
+  }
 }
 
 // =========================== Mobile ===========================
 
 @media(max-width: @tablet) {
-    .author__name {
-        font-size: 20px;
-    }
+  .author__name {
+    font-size: 20px;
+  }
 }
