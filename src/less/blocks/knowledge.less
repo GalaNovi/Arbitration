@@ -1,0 +1,171 @@
+.knowledge {
+  position: relative;
+  padding-bottom: 170px;
+  background: url("../img/graphic-line-desktop.png") no-repeat center 240px;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    top: 120px;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image: linear-gradient(to bottom, transparent 0px, transparent 98px,  rgba(255, 255, 255, 0.05) 98px,  rgba(255, 255, 255, 0.05) 100px,
+                                                 transparent 100px, transparent 201px,  rgba(255, 255, 255, 0.05) 201px,  rgba(255, 255, 255, 0.05) 203px,
+                                                 transparent 203px, transparent 305px,  rgba(255, 255, 255, 0.05) 305px,  rgba(255, 255, 255, 0.05) 307px,
+                                                 transparent 307px, transparent 408px,  rgba(255, 255, 255, 0.05) 408px,  rgba(255, 255, 255, 0.05) 410px,
+                                                 transparent 410px, transparent 100%);
+
+    content: "";
+  }
+}
+
+.knowledge__heading {
+  position: relative;
+
+  font-size: 40px;
+  line-height: 52px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: -39px;
+    left: -65px;
+
+    width: 69px;
+    height: 2px;
+
+    background-color: #f99406;
+
+    content: "";
+  }
+
+  &::after {
+    top: -24px;
+    left: -44px;
+  }
+}
+
+.knowledge__list {
+  display: flex;
+  .list-reset;
+  padding-top: 119px;
+  padding-left: 10px;
+
+  counter-reset: myCounter;
+}
+
+.knowledge__item {
+  position: relative;
+  width: 210px;
+  flex-shrink: 0;
+
+  &::before {
+    position: absolute;
+    top: -15px;
+    left: -20px;
+
+    counter-increment: myCounter;
+    content:counter(myCounter);
+    color: rgba(255, 255, 255, 0.07);
+
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 52px;
+  }
+
+  &:first-child {
+    margin-top: 86px;
+    margin-right: 110px;
+  }
+
+  &:nth-child(2) {
+    .knowledge__item-dot {
+      top: 129px;
+      left: -13px;
+    }
+  }
+
+  &:nth-child(3) {
+    margin-top: 98px;
+    margin-right: 25px;
+
+    &::before {
+      top: -7px;
+      left: -25px;
+    }
+
+    .knowledge__item-dot {
+      top: 140px;
+      left: -7px;
+    }
+  }
+
+  &:nth-child(4) {
+    margin-right: 20px;
+
+    &::before {
+      left: -25px;
+    }
+
+    .knowledge__item-dot {
+      top: 120px;
+      left: 2px;
+    }
+  }
+
+  &:last-child {
+    margin-top: -35px;
+
+    &::before {
+      top: -20px;
+      left: -28px;
+    }
+
+    .knowledge__item-dot {
+      top: 89px;
+      left: -12px;
+    }
+  }
+}
+
+.knowledge__item-dot {
+  position: absolute;
+  top: 128px;
+  left: 0;
+
+  width: 23px;
+  height: 23px;
+
+  border: 9px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 9px rgba(255, 255, 255, 0.2);
+}
+
+// =========================== Tablet ===========================
+
+@media(max-width: @desktop) {
+  .knowledge__heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+    
+  .knowledge__list {
+    font-size: 16px;
+  }
+}
+
+// =========================== Mobile ===========================
+
+@media(max-width: @tablet) {
+  .knowledge__heading {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}

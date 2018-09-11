@@ -4,105 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Школа трафика</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header class="page-header">
-    <img class="page-header__logo" src="http://placehold.it/109x30" alt="Логотип">
+    <div class="container">
+      <img class="page-header__logo" src="img/logo-desktop.png" alt="Логотип">
+    </div>
   </header>
 
   <main class="page-main">
-    <h1 class="visually-hidden">Школа траффика</h1>
-    <section class="videocource">
-      <h2 class="videocourse__heading">
-        <span class="videocourse__pre-heading">Видеокурс</span>
-        "Вступление в товарный арбитраж трафика"
-      </h2>
-      <p class="videocourse__text">
-          Получи бесплатный видеокурс  по товарному арбитражу для новичков
-      </p>
-      <form class="videocourse__form" action="https://echo.htmlacademy.ru" method="POST">
-        <label for="email-field" class="visually-hidden">Введите ваш e-mail</label>
-        <input class="videocource__form-input" id="email-field" type="email" name="email" placeholder="введите ваш e-mail" required>
-        <button class="videocourse__submit-button" type="submit">Скачать видеокурс</button>
-      </form>
-    </section>
-    <section class="features">
-      <h2 class="visually-hidden">Преимущества</h2>
-      <ul class="features__list">
-        <li class="features__item features__item--">
-          <span class="features__item-first-word">Быстро</span>
-          вольешься в нишу интернет продаж
-        </li>
-        <li class="features__item features__item--">
-            <span class="features__item-first-word">Овладеешь</span>
-            наиболее выгодной и востребованной профессией 2016 года
-        </li>
-        <li class="features__item features__item--">
-            <span class="features__item-first-word">Зарабатывай</span>
-            деньги в любой точке мира
-        </li>
-      </ul>
-    </section>
-    <section class="author">
-      <h2 class="author__heading">Автор видеокурса</h2>
-      <p class="author__name">Артур Гарнаев</p>
-      <p class="author__activity">Арбитражник, рекламодатель, интернет-предприниматель</p>
-      <p class="author__info">
-          Прокрутил рекламы более чем на 50000$ Ежедневно продаю более 
-          150 физический товаров притом, что трафик на рекламу лью сам!
-      </p>
-      <img class="author__photo" src="http://placehold.it/369x467" alt="Фотография автора">
-    </section>
+    <div class="container">
+      <h1 class="visually-hidden">Школа траффика</h1>
+      <section class="videocourse">
+        <h2 class="videocourse__heading">
+          <span class="videocourse__pre-heading">Видеокурс</span><br>
+          <span class="videocourse__heading-quotes">“</span>Вступление в товарный арбитраж трафика”
+        </h2>
+        <p class="videocourse__text">
+            Получи бесплатный видеокурс по товарному арбитражу для новичков
+        </p>
+        <form class="videocourse__form" action="https://echo.htmlacademy.ru" method="POST">
+          <label for="email-field" class="visually-hidden">Введите ваш e-mail</label>
+          <input class="videocource__form-input" id="email-field" type="email" name="email" placeholder="введите ваш e-mail" required>
+          <button class="videocourse__submit-button" type="submit">Скачать видеокурс</button>
+        </form>
+        <picture class="videocourse__image">
+          <img src="img/main-bg-desktop.png" alt="Изображение видеокурсов">
+        </picture>
+      </section>
+      <section class="features">
+        <h2 class="visually-hidden">Преимущества</h2>
+        <ul class="features__list">
+          <li class="features__item features__item--fast">
+            <span class="features__item-first-word">Быстро</span><br>
+            вольешься в нишу интернет продаж
+          </li>
+          <li class="features__item features__item--seize">
+            <span class="features__item-first-word">Овладеешь</span><br>
+            наиболее выгодной и востребованной профессией 2016 года
+          </li>
+          <li class="features__item features__item--earn">
+            <span class="features__item-first-word">Зарабатывай</span><br>
+            деньги в любой точке мира
+          </li>
+        </ul>
+      </section>
+      <section class="author">
+        <div class="autor__text-wrapper">
+          <h2 class="author__heading">Автор видеокурса</h2>
+          <p class="author__name">Артур Гарнаев</p>
+          <p class="author__activity">Арбитражник, рекламодатель, интернет-предприниматель</p>
+          <p class="author__info">
+              Прокрутил рекламы более чем на 50000$ Ежедневно продаю более 
+              150 физический товаров притом, что трафик на рекламу лью сам!
+          </p>
+        </div>
+        <picture class="author__photo">
+          <source media="(max-width: 768px)" srcset="img/photo-mobile.jpg">
+          <source media="(max-width: 1200px)" srcset="img/photo-tablet.jpg">
+          <img src="img/photo-desktop.jpg" alt="Фотография автора">
+        </picture>
+      </section>
+    </div>
     <section class="knowledge">
-      <h2 class="knowledge__heading">
-        После прохождения бесплатного видеокурса ты узнаешь:
-      </h2>
-      <ul class="knowledge__list">
-        <li class="knowledge__item">
-          В чем суть арбитража трафика?
-          <span class="knowledge__item-dot"></span>
-        </li>
-        <li class="knowledge__item">
-            Как заработать на арбитраже трафика?
-            <span class="knowledge__item-dot"></span>
-        </li>
-        <li class="knowledge__item">
-            Сколько можно заработать на товарке?
-            <span class="knowledge__item-dot"></span>
-        </li>
-        <li class="knowledge__item">
-            Как стать арбитражником?
-            <span class="knowledge__item-dot"></span>
-        </li>
-        <li class="knowledge__item">
-            С чего начать?
-            <span class="knowledge__item-dot"></span>
-        </li>
-      </ul>
+      <div class="container">
+        <h2 class="knowledge__heading">
+          После прохождения бесплатного видеокурса ты узнаешь:
+        </h2>
+        <ol class="knowledge__list">
+          <li class="knowledge__item">
+            В чем суть арбитража трафика?
+            <div class="knowledge__item-dot"></div>
+          </li>
+          <li class="knowledge__item">
+              Как заработать на арбитраже трафика?
+              <div class="knowledge__item-dot"></div>
+          </li>
+          <li class="knowledge__item">
+              Сколько можно заработать на товарке?
+              <div class="knowledge__item-dot"></div>
+          </li>
+          <li class="knowledge__item">
+              Как стать арбитражником?
+              <div class="knowledge__item-dot"></div>
+          </li>
+          <li class="knowledge__item">
+              С чего начать?
+              <div class="knowledge__item-dot"></div>
+          </li>
+        </ol>
+      </div>
     </section>
-    <section class="download">
-      <h2 class="download__heading">
-        Скачай видеокурс сейчас
-        <span class="download__heading-addon">
-          и получи крутой бонус совершенно бесплатно!
-        </span>
-      </h2>
-      <p class="download__alert">Предложение ограничено! Успей!</p>
-      <div class="download__timer"></div>
-      <form class="download__form" action="https://echo.htmlacademy.ru" method="POST">
-        <label for="email-field-second" class="visually-hidden">Введите ваш e-mail</label>
-        <input class="download__form-input" id="email-field-second" type="email" name="email" placeholder="введите ваш e-mail" required>
-        <button class="download__submit-button" type="submit">Скачать видеокурс</button>
-      </form>
-    </section>
+    <div class="container">
+      <section class="download">
+        <h2 class="download__heading">
+          Скачай видеокурс сейчас<br>
+          <span class="download__heading-addon">
+            и получи крутой бонус совершенно бесплатно!
+          </span>
+        </h2>
+        <p class="download__alert">Предложение ограничено! Успей!</p>
+        <div class="download__timer"></div>
+        <form class="download__form" action="https://echo.htmlacademy.ru" method="POST">
+          <label for="email-field-second" class="visually-hidden">Введите ваш e-mail</label>
+          <input class="download__form-input" id="email-field-second" type="email" name="email" placeholder="введите ваш e-mail" required>
+          <button class="download__submit-button" type="submit">Скачать видеокурс</button>
+        </form>
+      </section>
+    </div>
   </main>
 
   <footer class="page-footer">
-    <p class="page-footer__description">
-      <span class="page-footer__description-name">"Школа трафика"</span>
-       - школа товарного арбитража трафика Артура Гарнаева (с) 2016
-    </p>
+    <div class="container">
+      <p class="page-footer__description">
+        <span class="page-footer__description-name">"Школа трафика"</span>
+         - школа товарного арбитража трафика Артура Гарнаева (с) 2016
+      </p>
+    </div>
   </footer>
 
 </body>
