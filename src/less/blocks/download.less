@@ -27,6 +27,7 @@
   color: #f99406;
   font-weight: 300;
   letter-spacing: 0.9px;
+  text-shadow: 0 0 20px rgba(249, 148, 6, 0.6);
 }
 
 .download__alert {
@@ -53,40 +54,50 @@
 }
 
 .download__submit-button {
-width: 196px;
-height: 54px;
+  width: 196px;
+  height: 54px;
 
-font-size: 14px;
-line-height: auto;
-color: #ffffff;
-letter-spacing: 0.8px;
+  font-size: 14px;
+  line-height: auto;
+  color: #ffffff;
+  letter-spacing: 0.8px;
 
-background-color: #f99406;
-border: none;
+  background-color: #f99406;
+  border: none;
 
-cursor: pointer;
+  cursor: pointer;
 }
 
 // =========================== Tablet ===========================
 
-@media(max-width: @desktop) {
+@media (max-width: @desktop) {
+  .download {
+    padding-top: 70px;
+    padding-bottom: 170px;
+
+    background: url("../img/download-bg-tablet.png") no-repeat center top;
+  }
+
   .download__heading {
+    margin-bottom: 60px;
+
     font-size: 28px;
     line-height: 36px;
   }
 
-    .download__heading-addon {
+  .download__heading-addon {
     font-size: 16px;
   }
 
-    .download__alert {
+  .download__alert {
+    margin-bottom: 210px;
     font-size: 16px;
   }
 }
 
 // =========================== Mobile ===========================
 
-@media(max-width: @tablet) {
+@media (max-width: @tablet) {
   .download__heading {
     font-size: 20px;
     line-height: 30px;
@@ -101,7 +112,7 @@ cursor: pointer;
     width: auto;
     text-align: center;
   }
-    
+
   .download__submit-button {
     width: auto;
   }
