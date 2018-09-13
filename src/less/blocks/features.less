@@ -100,10 +100,52 @@
 // =========================== Tablet ===========================
 
 @media (max-width: @desktop) {
+  .features {
+    padding-bottom: 115px;
+  }
+
+  .features__list {
+    padding: 0;
+    padding-right: 35px;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
   .features__item {
     width: 185px;
 
     font-size: 16px;
     line-height: 20px;
+
+    &::after {
+      display: none;
+    }
+
+    &--fast {
+      &::before {
+        left: 0;
+      }
+    }
+
+    &--seize {
+      margin-left: 5px;
+
+      &::before {
+        left: -3px;
+      }
+    }
+
+    &--earn {
+      &::before {
+        left: 0;
+      }
+    }
+  }
+
+  .features__item-first-word {
+    margin-bottom: -10px;
   }
 }

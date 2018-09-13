@@ -40,6 +40,7 @@
   color: #f99406;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  text-shadow: 0 0 20px rgba(249, 148, 6, 0.6);
 }
 
 .author__name {
@@ -66,6 +67,7 @@
 
 .author__photo {
   align-self: center;
+  margin-top: -15px;
 
   order: -1;
   z-index: 1;
@@ -78,8 +80,38 @@
 // =========================== Tablet ===========================
 
 @media (max-width: @desktop) {
+  .author {
+    padding-bottom: 105px;
+  }
+
+  .autor__text-wrapper {
+    margin-left: -145px;
+    margin-right: -5px;
+    padding-top: 115px;
+    padding-left: 170px;
+    padding-right: 50px;
+    width: 579px;
+    min-height: 495px;
+
+    background-image: radial-gradient(at 40% 37%, rgba(255, 255, 255, 0.12 ), transparent 50%);
+
+    &::after {
+      top: 188px;
+      left: 0;
+      width: 370px;
+    }
+  }
+
   .author__name {
+    margin-top: -15px;
+    margin-bottom: 30px;
+
     font-size: 28px;
+  }
+
+  .author__activity {
+    .indent-reset;
+    margin-bottom: 18px;
   }
 
   .author__info {

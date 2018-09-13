@@ -27,6 +27,7 @@
   color: #f99406;
   font-weight: 300;
   letter-spacing: 0.9px;
+  text-shadow: 0 0 20px rgba(249, 148, 6, 0.6);
 }
 
 .download__alert {
@@ -70,7 +71,16 @@
 // =========================== Tablet ===========================
 
 @media (max-width: @desktop) {
+  .download {
+    padding-top: 70px;
+    padding-bottom: 170px;
+
+    background: url("../img/download-bg-tablet.png") no-repeat center top;
+  }
+
   .download__heading {
+    margin-bottom: 60px;
+
     font-size: 28px;
     line-height: 36px;
   }
@@ -80,6 +90,7 @@
   }
 
   .download__alert {
+    margin-bottom: 210px;
     font-size: 16px;
   }
 }
