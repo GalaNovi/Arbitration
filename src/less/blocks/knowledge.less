@@ -253,8 +253,66 @@
 // =========================== Mobile ===========================
 
 @media (max-width: @tablet) {
+  .knowledge {
+    padding-top: 30px;
+    padding-bottom: 3px;
+  }
+
   .knowledge__heading {
+    margin-bottom: 38px;
     font-size: 20px;
     line-height: 30px;
+
+    &::before,
+    &::after {
+      left: 0;
+    }
+
+    &::after {
+      left: 20px;
+    }
+  }
+
+  .knowledge__list {
+    margin: 0 auto;
+    padding-left: 85px;
+    width: 290px;
+    height: auto;
+  }
+
+  .knowledge__item {
+    margin-bottom: 52px;
+
+    &:nth-child(n+4) {
+      margin-left: 0;
+    }
+
+    &:nth-child(2) {
+      .knowledge__item-dot {
+        top: 3px;
+        left: -53px;
+      }
+    }
+
+    &:nth-child(3) {
+      .knowledge__item-dot {
+        top: 3px;
+        left: -53px;
+      }
+    }
+
+    &:nth-child(4) {
+      .knowledge__item-dot {
+        top: 3px;
+        left: -53px;
+      }
+    }
+
+    &:last-child {
+      .knowledge__item-dot {
+        top: 3px;
+        left: -53px;
+      }
+    }
   }
 }
