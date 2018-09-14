@@ -37,8 +37,12 @@ body {
 
   background: @color-background url("../img/main-bg-desktop.png") no-repeat center -87px;
 
-  @media (max-width: @desktop) {
+  @media (max-width: @desktop) { // Для планшетной версии
     background: @color-background url("../img/main-bg-tablet.png") no-repeat center 33px;
+  }
+
+  @media (max-width: @tablet) { // Для мобильной версии
+    background: @color-background url("../img/main-bg-mobile.png") no-repeat center 193px;
   }
 }
 

@@ -98,9 +98,25 @@
 // =========================== Mobile ===========================
 
 @media (max-width: @tablet) {
+  .download {
+    margin: 0 -15px;
+    padding: 80px 15px 80px;
+
+    background: url("../img/download-bg-mobile.png") no-repeat center top;
+  }
+
   .download__heading {
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 290px;
+
     font-size: 20px;
     line-height: 30px;
+    letter-spacing: 1px;
+  }
+
+  .download__alert {
+    margin-bottom: 126px;
   }
 
   .download__form {
@@ -110,10 +126,12 @@
 
   .download__form-input {
     width: auto;
+    height: 45px;
     text-align: center;
   }
 
   .download__submit-button {
     width: auto;
+    height: 45px;
   }
 }
