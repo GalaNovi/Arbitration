@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Школа трафика</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Школа трафика</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -103,7 +103,26 @@
           </span>
         </h2>
         <p class="download__alert">Предложение ограничено! Успей!</p>
-        <div class="download__timer"></div>
+        <div class="download__timer">
+          <ul class="countdown">
+            <li>
+              <span class="days">00</span>
+              <p class="days_ref">Дней</p>
+            </li>
+            <li>
+              <span class="hours">00</span>
+              <p class="hours_ref">Часов</p>
+            </li>
+            <li>
+              <span class="minutes">00</span>
+              <p class="minutes_ref">Минут</p>
+            </li>
+            <li>
+              <span class="seconds">00</span>
+              <p class="seconds_ref">Секунд</p>
+            </li>
+          </ul>
+        </div>
         <form class="download__form" action="https://echo.htmlacademy.ru" method="POST">
           <label for="email-field-second" class="visually-hidden">Введите ваш e-mail</label>
           <input class="download__form-input" id="email-field-second" type="email" name="email" placeholder="введите ваш e-mail" required>
@@ -123,5 +142,8 @@
   </footer>
 
   <script src="js/picturefill.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery.downCount.js"></script>
+  <script src="js/timer-common.js"></script>
 </body>
 </html>

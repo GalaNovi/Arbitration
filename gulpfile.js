@@ -111,7 +111,7 @@ gulp.task('styleBuild', function () { // Создает из стилей less s
 });
 
 gulp.task('copyDev', function () { // копирует файлы для разработки
-  return gulp.src('src/{fonts,js,img}/*.*', {since: gulp.lastRun('copyDev')})
+  return gulp.src('src/{fonts,js,img,css}/*.*', {since: gulp.lastRun('copyDev')})
   .pipe(newer('dev'))
   .pipe(gulp.dest('dev'))
 });
@@ -182,7 +182,7 @@ gulp.task('serve', function () { // Запускает сервер, при из
 
 gulp.task('watch', function () { // Настройки вотчера
   gulp.watch('src/**/*.less', gulp.series('styleDev'));
-  gulp.watch('src/{fonts,img}/**/*.*', gulp.parallel('copyDev', 'webpDev'));
+  gulp.watch('src/{fonts,img,js,css}/**/*.*', gulp.parallel('copyDev', 'webpDev'));
   gulp.watch('src/*.html', gulp.series('copyHTMLDev'));
 });
 
