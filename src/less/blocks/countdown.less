@@ -1,0 +1,127 @@
+.countdown {
+  list-style: none;
+  margin: 58px 0 24px;
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+
+.countdown li {
+  position: relative;
+  margin-right: 60px;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 14px;
+    right: -35px;
+
+    width: 6px;
+    height: 6px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+
+    content: "";
+  }
+
+  &::after {
+    top: 40px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.countdown li span {
+  display: block;
+  margin-bottom: 30px;
+  font-size: 65px;
+  font-weight: normal;
+  line-height: 52px;
+  color: #ffffff;
+  font-family: "Roboto", "Arial", sans-serif;
+}
+
+.countdown li p {
+  position: relative;
+
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 24px;
+  text-transform: lowercase;
+
+  &::before {
+    position: absolute;
+    top: -12px;
+    left: -24px;
+
+    width: 120px;
+    height: 2px;
+
+    background-color: #ffffff;
+
+    content: "";
+  }
+}
+
+// ======================== Tablet ================
+
+@media (max-width: @desktop) {
+  .countdown {
+    margin-bottom: 26px;
+  }
+}
+
+// ======================== Mobile ================
+
+@media (max-width: @tablet) {
+  .countdown {
+    margin: 27px 0 27px;
+  }
+
+  .countdown li {
+    margin-right: 30px;
+
+    &::before,
+    &::after {
+      top: 6px;
+      right: -21px;
+
+      width: 4px;
+      height: 4px;
+
+      border-radius: 50%;
+    }
+
+    &::after {
+      top: 20px;
+    }
+  }
+
+  .countdown li span {
+    margin-bottom: 19px;
+
+    font-size: 32px;
+    line-height: 28px;
+  }
+
+  .countdown li p {
+    font-size: 12px;
+    line-height: 13px;
+
+    &::before {
+      top: -9px;
+      left: -12px;
+
+      width: 65px;
+      height: 1px;
+    }
+  }
+}
