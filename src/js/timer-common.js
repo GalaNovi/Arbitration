@@ -18,6 +18,6 @@ $('.countdown').downCount({
   date: toIncreaseTime(dateNow),
   offset: +3,
 }, function () {
-  let message = document.querySelector('.download__alert');
+  var message = document.querySelector('.download__alert');
   message.textContent = 'К сожалению, акция закончилась... ¯\\_(ツ)_/¯';
 });

@@ -117,8 +117,8 @@ gulp.task('copyDev', function () { // копирует файлы для раз�
 });
 
 gulp.task('copyBuild', function () { // копирует шрифты для билда
-  return gulp.src('src/fonts/*.*')
-  .pipe(gulp.dest('build/fonts'))
+  return gulp.src('src/{fonts,js}/*.*')
+  .pipe(gulp.dest('build'))
 });
 
 gulp.task('copyHTMLDev', function () { // копирует html для разработки
@@ -188,4 +188,4 @@ gulp.task('watch', function () { // Настройки вотчера
 
 gulp.task('dev', gulp.series(gulp.parallel('styleDev', 'copyDev', 'webpDev', gulp.series('spriteDev', 'copyHTMLDev')), gulp.parallel('clearCache', 'watch', 'serve')));
 
-gulp.task('build', gulp.series('cleanBuild', gulp.parallel('styleBuild', 'imagesBuild', 'copyBuild', 'webpBuild', 'jsBuild', 'jsMinBuild', gulp.series('spriteBuild', 'copyHTMLBuild', 'clearCache'))));
+gulp.task('build', gulp.series('cleanBuild', gulp.parallel('styleBuild', 'imagesBuild', 'copyBuild', 'webpBuild', gulp.series('copyHTMLBuild', 'clearCache'))));

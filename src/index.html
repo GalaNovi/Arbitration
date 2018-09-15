@@ -2,8 +2,13 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="keywords" content="Школа, арбитраж, видеокурс">
+  <meta name="description" content="Вступление в товарный арбитраж траффика">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Школа трафика</title>
+  <link rel="preload" href="fonts/Roboto-Black.woff2" as="font" crossorigin>
+  <link rel="preload" href="fonts/Roboto-Light.woff2" as="font" crossorigin>
+  <link rel="preload" href="fonts/Roboto-Regilar.woff2" as="font" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -59,6 +64,9 @@
           </p>
         </div>
         <picture class="author__photo">
+          <source type="image/webp" media="(max-width: 750px)" srcset="img/photo-mobile.webp">
+          <source type="image/webp" media="(max-width: 1200px)" srcset="img/photo-tablet.webp">
+          <source type="image/webp" srcset="img/photo-desktop.webp">
           <source media="(max-width: 750px)" srcset="img/photo-mobile.jpg">
           <source media="(max-width: 1200px)" srcset="img/photo-tablet.jpg">
           <img src="img/photo-desktop.jpg" alt="Фотография автора">
