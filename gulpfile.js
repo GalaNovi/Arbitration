@@ -1,191 +1,160 @@
 'use strict';
 
-var gulp = require('gulp');
-var less = require('gulp-less');
-var plumber = require("gulp-plumber");
-var del = require('del');
-var newer = require('gulp-newer');
-var browserSync = require('browser-sync').create();
-var posthtml = require("gulp-posthtml");
-var include = require("posthtml-include");
-var svgstore = require("gulp-svgstore");
-var rename = require("gulp-rename");
-var mincss = require("gulp-csso");
-var imagemin = require("gulp-imagemin");
-var imageminJpegRecompress = require('imagemin-jpeg-recompress');
-var pngquant = require('imagemin-pngquant');
-var cache = require('gulp-cache');
-var webp = require("gulp-webp");
-var gulpAutoprefixer = require('gulp-autoprefixer');
-var jsfiles = require('./jsfiles.json');
-var concat = require('gulp-concat');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var htmlmin = require("gulp-htmlmin");
-var pump = require('pump');
+const sourceFolder = 'src';
+const developmentFolder = 'dev';
+const buildFolder = 'build';
+const svgSpriteName = 'sprite';
+const cssFileName = 'style';
+const jsFileName = 'all';
+const jsModulesFilePath = './' + sourceFolder + '/js/modules/files.json';
+const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
 
-gulp.task('jsDev', function () { // Склеивает js модули для разработки
-  return gulp.src(jsfiles, {base: 'src/js/modules'})
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(concat('all.js'))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dev/js'));
-});
+// Если файл с модулями js существует - рекваерит его.
+try {
+  var jsModules = require(jsModulesFilePath);
+} catch (error) {
+  var jsModules = false;
+};
 
-gulp.task('jsBuild', function () { // Склеивает и сжимает js модули для билда
-  return gulp.src(jsfiles, {base: 'src/js/modules'})
-    .pipe(concat('all.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('build/js'));
-});
-
-gulp.task('jsMinBuild', function (cb) { // Сжимает самостоятельные js файлы для билда
-  pump([
-        gulp.src('src/js/*.js'),
-        uglify(),
-        gulp.dest('build/js')
-    ],
-    cb
-  );
-});
-
-gulp.task('imagesBuild', function() { // Оптимизирует растровую графику (только для билда)
-  return gulp.src('src/img/**/*.{jpg,png}')
-    .pipe(cache(imagemin([
-      imagemin.gifsicle({interlaced: true}),
-      imagemin.jpegtran({progressive: true}),
-      imageminJpegRecompress({
-        loops: 5,
-        min: 50,
-        max: 60,
-        quality:'medium'
-      }),
-      imagemin.optipng({optimizationLevel: 3}),
-      pngquant({quality: '50-60', speed: 5})
-    ],{
-      verbose: false
-    })))
-    .pipe(gulp.dest('build/img'));
-});
-
-gulp.task('clearCache', function (done) { // Чистит кэш
-  return cache.clearAll(done);
-});
-
-gulp.task('webpDev', function() { // Копирует графику в webP формат для разработки
-  return gulp.src('src/img/**/*.{jpg,png}', {since: gulp.lastRun('webpDev')})
-    .pipe(newer('dev/img'))
-    .pipe(webp({quality: 70}))
-    .pipe(gulp.dest("dev/img"));
-});
-
-gulp.task('webpBuild', function() { // Копирует графику в webP формат для билда
-  return gulp.src('src/img/**/*.{jpg,png}')
-    .pipe(webp({quality: 70}))
-    .pipe(gulp.dest("build/img"));
-});
-
-gulp.task('styleDev', function () { // Создает из стилей less style.css, расставляет префиксы (разработка)
-  return gulp.src('src/less/style.less')
-    .pipe(plumber())
-    .pipe(less())
-    .pipe(gulpAutoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false,
-      grid: true
-    }))
-    .pipe(gulp.dest('dev/css'))
-});
-
-gulp.task('styleBuild', function () { // Создает из стилей less style.css, расставляет префиксы, минифицирует (билд)
-  return gulp.src('src/less/style.less')
-    .pipe(plumber())
-    .pipe(less())
-    .pipe(gulpAutoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false,
-      grid: true
-    }))
-    .pipe(mincss())
-    .pipe(gulp.dest('build/css'))
-});
-
-gulp.task('copyDev', function () { // копирует файлы для разработки
-  return gulp.src('src/{fonts,js,img,css}/*.*', {since: gulp.lastRun('copyDev')})
-  .pipe(newer('dev'))
-  .pipe(gulp.dest('dev'))
-});
-
-gulp.task('copyBuild', function () { // копирует шрифты для билда
-  return gulp.src('src/{fonts,js}/*.*')
-  .pipe(gulp.dest('build'))
-});
-
-gulp.task('copyHTMLDev', function () { // копирует html для разработки
-  return gulp.src('src/*.html', {since: gulp.lastRun('copyHTMLDev')})
-  .pipe(newer('dev'))
-  .pipe(posthtml([
-    include()
-  ]))
-  .pipe(gulp.dest('dev'))
-});
-
-gulp.task('copyHTMLBuild', function () { // копирует и сжимает html для билда
-  return gulp.src('src/*.html')
-  .pipe(posthtml([
-    include()
-  ]))
-  .pipe(htmlmin({collapseWhitespace: true}))
-  .pipe(gulp.dest('build'))
-});
-
-gulp.task('cleanDev', function () { // удаляет папку "dev"
-  return del('dev');
-});
-
-gulp.task('cleanBuild', function () { // удаляет папку "build"
-  return del('build');
-});
-
-gulp.task('spriteDev', function() { // Оптимизирует SVG и создает спрайт для разработки
-  return gulp.src("src/img/icon-*.svg")
-    .pipe(imagemin([
-      imagemin.svgo()
-    ]))
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
-    .pipe(rename("sprite.svg"))
-    .pipe(gulp.dest("dev/img"));
-});
-
-gulp.task('spriteBuild', function() { // Оптимизирует SVG и создает спрайт для билда
-  return gulp.src("src/img/icon-*.svg")
-    .pipe(imagemin([
-      imagemin.svgo()
-    ]))
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
-    .pipe(rename("sprite.svg"))
-    .pipe(gulp.dest("build/img"));
-});
-
-gulp.task('serve', function () { // Запускает сервер, при изменениях перезагружается
-  browserSync.init({
-    server: 'dev',
-    notify: false
+// При вызове, рекваерит путь с нужным модулем.
+var lazyRequireTask = function (taskName, path, options) {
+  options = options || {};
+  options.taskName = taskName;
+  gulp.task(taskName, function (callback) {
+    var task = require(path).call(this, options);
+    return task(callback);
   });
+};
 
-  browserSync.watch('dev/**/*.*').on('change', browserSync.reload);
+// Собирает style.css из LESS, расставляет префиксы и сжимает для прода.
+lazyRequireTask('style', './tasks/style', {
+  src: sourceFolder + '/less/' + cssFileName + '.less',
+  dev: developmentFolder,
+  build: buildFolder
 });
 
-gulp.task('watch', function () { // Настройки вотчера
-  gulp.watch('src/**/*.less', gulp.series('styleDev'));
-  gulp.watch('src/{fonts,img,js,css}/**/*.*', gulp.parallel('copyDev', 'webpDev'));
-  gulp.watch('src/*.html', gulp.series('copyHTMLDev'));
+// Из файлов svg для инлайновой вставки делает спрайт и бросает его в папку img. Для прода оптимизирует.
+lazyRequireTask('sprite:svg', './tasks/sprite-svg', {
+  src: sourceFolder + '/img/**/inline*.svg',
+  dev: developmentFolder,
+  build: buildFolder,
+  spriteName: svgSpriteName + '.svg'
 });
 
-gulp.task('dev', gulp.series(gulp.parallel('styleDev', 'copyDev', 'webpDev', gulp.series('spriteDev', 'copyHTMLDev')), gulp.parallel('clearCache', 'watch', 'serve')));
+// Вставляет svg спрайт. Для прода сжимает и меняет адрес css и js.
+lazyRequireTask('html', './tasks/html', {
+  src: sourceFolder + '/**/*.html',
+  dev: developmentFolder,
+  build: buildFolder,
+  spriteName: svgSpriteName + '.svg',
+  cssName: cssFileName,
+  jsName: jsFileName
+});
 
-gulp.task('build', gulp.series('cleanBuild', gulp.parallel('styleBuild', 'imagesBuild', 'copyBuild', 'webpBuild', gulp.series('copyHTMLBuild', 'clearCache'))));
+// Оптимизирует графику.
+lazyRequireTask('images', './tasks/images', {
+  src: [sourceFolder + '/img/**/*.{jpg,png,gif}', sourceFolder + '/img/**/*.svg', '!' + sourceFolder + '/img/**/inline*.svg'],
+  srcFolder: sourceFolder,
+  dev: developmentFolder,
+  build: buildFolder
+});
+
+// Конвертирует контентные изображения в webP формат.
+lazyRequireTask('webp', './tasks/webp', {
+  src: sourceFolder + '/img/content/**/*.{jpg,png}',
+  srcFolder: sourceFolder,
+  dev: developmentFolder,
+  build: buildFolder
+});
+
+// Склеивает js модули в один all.js, для прода сжимает.
+lazyRequireTask('scripts:modules', './tasks/scripts-modules', {
+  src: jsModules,
+  dev: developmentFolder,
+  build: buildFolder,
+  jsName: jsFileName
+});
+
+// Берет все подключаемые js файлы (библиотеки, полифиллы и т.д.) и копирует их. Для прода сжимает.
+lazyRequireTask('scripts:copy', './tasks/scripts-copy', {
+  src: [sourceFolder + '/js/**/*.js', '!' + sourceFolder + '/js/modules/**/*.js'],
+  srcFolder: sourceFolder,
+  dev: developmentFolder,
+  build: buildFolder
+});
+
+// Группирует задачи по работе со скриптами.
+gulp.task('scripts', gulp.parallel('scripts:modules', 'scripts:copy'));
+
+// Форматирует шрифты ttf в woff.
+lazyRequireTask('ttf2woff', './tasks/ttf2woff', {
+  src: sourceFolder + '/fonts/**/*.ttf',
+  srcFolder: sourceFolder
+});
+
+// Форматирует шрифты ttf в woff2.
+lazyRequireTask('ttf2woff2', './tasks/ttf2woff2', {
+  src: sourceFolder + '/fonts/**/*.ttf',
+  srcFolder: sourceFolder
+});
+
+// Удаляет шрифты ttf из исходников.
+lazyRequireTask('del:ttf:fonts', './tasks/del-ttf-fonts', {
+  src: sourceFolder + '/fonts/**/*.ttf'
+});
+
+// Группирует таски. Форматирует шрифты и удаляет исходники.
+gulp.task('fonts', gulp.series('ttf2woff', 'ttf2woff2', 'del:ttf:fonts'));
+
+// Копирует шрифты.
+lazyRequireTask('fonts:copy', './tasks/fonts-copy', {
+  src: sourceFolder + '/fonts/**/*.{woff,woff2}',
+  srcFolder: sourceFolder,
+  dev: developmentFolder,
+  build: buildFolder
+});
+
+// Удаляет папку dev или build.
+lazyRequireTask('clean', './tasks/clean', {
+  dev: developmentFolder,
+  build: buildFolder
+});
+
+gulp.task('watch', function () { // Запускает вотчер.
+	gulp.watch(sourceFolder + '/**/*.html', gulp.series('html'));
+	gulp.watch(sourceFolder + '/less/**/*.*', gulp.series('style'));
+	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts', 'fonts:copy'));
+	gulp.watch(sourceFolder + '/img/**/inline*.svg', gulp.series('sprite:svg'));
+	gulp.watch([sourceFolder + '/img/**/*.*', '!' + sourceFolder + '/img/**/inline*.svg'], gulp.parallel('images', 'webp'));
+	gulp.watch(sourceFolder + '/js/modules/**/*.js', gulp.series('scripts:modules'));
+	gulp.watch([sourceFolder + '/js/**/*.js', '!' + sourceFolder + '/js/modules/**/*.js'], gulp.series('scripts:copy'));
+});
+
+gulp.task('serve', function () { // Запускает сервер.
+	browserSync.init({
+		server: developmentFolder
+	});
+	browserSync.watch(developmentFolder + '/**/*.*').on('change', browserSync.reload);
+});
+
+gulp.task('build', gulp.series(
+  'clean',
+  'sprite:svg',
+  gulp.parallel(
+    'style',
+    'html',
+    'images',
+    'webp',
+    'scripts',
+    'fonts:copy'
+  )
+));
+
+gulp.task('dev', gulp.series(
+  'build',
+  gulp.parallel(
+    'watch',
+    'serve'
+  )
+));

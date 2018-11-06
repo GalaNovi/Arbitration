@@ -8,14 +8,14 @@
   <title>Школа трафика</title>
   <link rel="preload" href="fonts/Roboto-Black.woff2" as="font" crossorigin>
   <link rel="preload" href="fonts/Roboto-Light.woff2" as="font" crossorigin>
-  <link rel="preload" href="fonts/Roboto-Regilar.woff2" as="font" crossorigin>
+  <link rel="preload" href="fonts/Roboto-Regular.woff2" as="font" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header class="page-header">
     <div class="container">
-      <img class="page-header__logo" src="img/logo-desktop.png" alt="Логотип">
+      <img class="page-header__logo" src="img/other/logo-desktop.png" alt="Логотип">
     </div>
   </header>
 
@@ -64,12 +64,12 @@
           </p>
         </div>
         <picture class="author__photo">
-          <source type="image/webp" media="(max-width: 750px)" srcset="img/photo-mobile.webp">
-          <source type="image/webp" media="(max-width: 1200px)" srcset="img/photo-tablet.webp">
-          <source type="image/webp" srcset="img/photo-desktop.webp">
-          <source media="(max-width: 750px)" srcset="img/photo-mobile.jpg">
-          <source media="(max-width: 1200px)" srcset="img/photo-tablet.jpg">
-          <img src="img/photo-desktop.jpg" alt="Фотография автора">
+          <source type="image/webp" media="(max-width: 750px)" srcset="img/content/photo-mobile.webp">
+          <source type="image/webp" media="(max-width: 1200px)" srcset="img/content/photo-tablet.webp">
+          <source type="image/webp" srcset="img/content/photo-desktop.webp">
+          <source media="(max-width: 750px)" srcset="img/content/photo-mobile.jpg">
+          <source media="(max-width: 1200px)" srcset="img/content/photo-tablet.jpg">
+          <img src="img/content/photo-desktop.jpg" alt="Фотография автора">
         </picture>
       </section>
     </div>
@@ -149,9 +149,9 @@
     </div>
   </footer>
 
-  <script src="js/picturefill.js"></script>
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery.downCount.js"></script>
-  <script src="js/timer-common.js"></script>
+  <script src="js/polyfills/picturefill.js"></script>
+  <script src="js/librarys/jquery-3.3.1.min.js"></script>
+  <script src="js/plugins/jquery.downCount.js"></script>
+  <script src="js/plugins/timer-common.js"></script>
 </body>
 </html>
