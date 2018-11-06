@@ -115,6 +115,14 @@ lazyRequireTask('fonts:copy', './tasks/fonts-copy', {
   build: buildFolder
 });
 
+// Копирует подключаемые css
+lazyRequireTask('css:copy', './tasks/css-copy', {
+  src: sourceFolder + '/css/**/*.css',
+  srcFolder: sourceFolder,
+  dev: developmentFolder,
+  build: buildFolder
+});
+
 // Удаляет папку dev или build.
 lazyRequireTask('clean', './tasks/clean', {
   dev: developmentFolder,
@@ -124,6 +132,7 @@ lazyRequireTask('clean', './tasks/clean', {
 gulp.task('watch', function () { // Запускает вотчер.
 	gulp.watch(sourceFolder + '/**/*.html', gulp.series('html'));
 	gulp.watch(sourceFolder + '/less/**/*.*', gulp.series('style'));
+	gulp.watch(sourceFolder + '/css/**/*.css', gulp.series('css:copy'));
 	gulp.watch(sourceFolder + '/fonts/**/*.*', gulp.series('fonts', 'fonts:copy'));
 	gulp.watch(sourceFolder + '/img/**/inline*.svg', gulp.series('sprite:svg'));
 	gulp.watch([sourceFolder + '/img/**/*.*', '!' + sourceFolder + '/img/**/inline*.svg'], gulp.parallel('images', 'webp'));
@@ -143,6 +152,7 @@ gulp.task('build', gulp.series(
   'sprite:svg',
   gulp.parallel(
     'style',
+    'css:copy',
     'html',
     'images',
     'webp',
